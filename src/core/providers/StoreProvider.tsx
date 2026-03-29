@@ -1,8 +1,5 @@
 import type { PropsWithChildren } from 'react'
-import { createContext } from 'zustand-utils'
-import { appStore } from '../stores/app.store'
-
-const { Provider } = createContext()
+import { appStore, Provider } from '@/core/stores/app.store'
 
 type Props = PropsWithChildren & {}
 
