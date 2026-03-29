@@ -1,9 +1,17 @@
 import path from 'node:path';
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    tanstackRouter({
+      target: 'react',
+      routesDirectory: './src/core/routes',
+      autoCodeSplitting: true,
+    }),
+    react()
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
