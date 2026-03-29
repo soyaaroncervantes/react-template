@@ -11,7 +11,7 @@ export const themeSlice = createSlice({
 })
 
 export type ThemeSlice = {
-  theme: ThemeType,
+  theme: ThemeType
   setTheme: (theme: ThemeType) => void
 }
 
