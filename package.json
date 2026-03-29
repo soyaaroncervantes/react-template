@@ -16,6 +16,7 @@
     "prepare": "bunx simple-git-hooks"
   },
   "dependencies": {
+    "@m3e/react": "^2.1.3",
     "@tanstack/react-query": "^5.95.2",
     "@tanstack/react-router": "1.168.8",
     "react": "19.2.4",
