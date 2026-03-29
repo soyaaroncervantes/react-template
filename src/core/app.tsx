@@ -2,6 +2,7 @@ import { createRouter, RouterProvider } from '@tanstack/react-router'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { routeTree } from '../routeTree.gen'
+import { QueryProvider } from './providers/QueryProvider'
 import { StoreProvider } from './providers/StoreProvider'
 
 const router = createRouter({ routeTree })
@@ -21,7 +22,9 @@ if (!rootElement) {
 createRoot(rootElement).render(
   <StrictMode>
     <StoreProvider>
-      <RouterProvider router={router} />
+      <QueryProvider>
+        <RouterProvider router={router} />
+      </QueryProvider>
     </StoreProvider>
   </StrictMode>
 )
