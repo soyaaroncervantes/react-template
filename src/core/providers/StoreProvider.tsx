@@ -4,10 +4,8 @@ import { useAppStore } from '../stores/app.store'
 
 const { Provider } = createContext()
 
-type Props = PropsWithChildren & {};
+type Props = PropsWithChildren & {}
 
 export const StoreProvider = ({ children }: Props) => (
-  <Provider createStore={useAppStore}>
-    {children}
-  </Provider>
+  <Provider createStore={useAppStore}>{children}</Provider>
 )
