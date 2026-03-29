@@ -8,9 +8,7 @@ export const AppProvider = ({ children }: Props) => {
   return (
     <StoreProvider>
       <QueryProvider>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </QueryProvider>
     </StoreProvider>
   )
