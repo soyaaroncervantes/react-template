@@ -1,5 +1,5 @@
 import { M3eButton } from '@m3e/react/button'
-import { M3eTextHighlight } from '@m3e/react/core'
+import { M3eCard } from '@m3e/react/card'
 import { useCallback } from 'react'
 import { type ThemeType, useThemeStore } from '@/features/theme/theme.stores'
 
@@ -20,10 +20,12 @@ export const HomePage = () => {
       <M3eButton variant="outlined" shape="square" onClick={() => updateTheme('light')}>
         Light
       </M3eButton>
-      <M3eButton variant="tonal" shape="square" onClick={() => updateTheme('system')}>
-        System
+      <M3eButton variant="tonal" shape="square" onClick={() => updateTheme('auto')}>
+        Auto
       </M3eButton>
-      <M3eTextHighlight>Current theme: {theme}</M3eTextHighlight>
+      <M3eCard>
+        <p>Tema actual: {theme}</p>
+      </M3eCard>
     </div>
   )
 }
