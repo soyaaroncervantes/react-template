@@ -6,4 +6,4 @@ import { createDevtools } from './devtools.store'
 const devtools = createDevtools('App')
 const store = withSlices(themeSlice)
 
-export const useAppStore = () => create(devtools(store))
+export const appStore = () => create(devtools(store))
