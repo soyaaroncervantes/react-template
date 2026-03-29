@@ -4,11 +4,11 @@ import { createContext } from 'zustand-utils'
 import { themeSlice } from '@/features/theme/theme.stores'
 import { createDevtools } from './devtools.store'
 
-const store = withSlices(themeSlice)
-export type AppStore = ReturnType<typeof store>
+const storeConfig = withSlices(themeSlice)
+export type AppStore = ReturnType<typeof storeConfig>
 
 const devtools = createDevtools('App')
-export const appStore = () => create<AppStore>()(devtools(store))
+export const createStore = () => create<AppStore>()(devtools(storeConfig))
 
 type AppStoreApi = StoreApi<AppStore>
 
