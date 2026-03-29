@@ -1,10 +1,9 @@
 import { M3eButton } from '@m3e/react/button'
-import { M3eCard } from '@m3e/react/card'
 import { useCallback } from 'react'
 import { type ThemeType, useThemeStore } from '@/features/theme/theme.stores'
 
 export const HomePage = () => {
-  const { setTheme, theme } = useThemeStore()
+  const { setTheme } = useThemeStore()
   const updateTheme = useCallback(
     (theme: ThemeType) => {
       setTheme(theme)
@@ -23,9 +22,6 @@ export const HomePage = () => {
       <M3eButton variant="tonal" shape="square" onClick={() => updateTheme('auto')}>
         Auto
       </M3eButton>
-      <M3eCard>
-        <p>Tema actual: {theme}</p>
-      </M3eCard>
     </div>
   )
 }
