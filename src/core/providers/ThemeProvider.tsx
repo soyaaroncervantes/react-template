@@ -9,5 +9,9 @@ interface ThemeProviderProps {
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const { theme } = useThemeStore()
 
-  return <M3eTheme scheme={theme}>{children}</M3eTheme>
+  return (
+    <M3eTheme scheme={theme} color="#6750A4" motion="expressive">
+      {children}
+    </M3eTheme>
+  )
 }
