@@ -24,7 +24,13 @@ function RootPage() {
         <M3eHeading variant="title" size="medium">
           Stack
         </M3eHeading>
-        <div style={{ backgroundColor: 'var(--md-sys-color-surface-container)', padding: '1rem', borderRadius: '1rem' }}>
+        <div
+          style={{
+            backgroundColor: 'var(--md-sys-color-surface-container)',
+            padding: '1rem',
+            borderRadius: '1rem',
+          }}
+        >
           <M3eList variant="segmented">
             <M3eListItem>TanStack Router</M3eListItem>
             <M3eListItem>M3E Design System</M3eListItem>
