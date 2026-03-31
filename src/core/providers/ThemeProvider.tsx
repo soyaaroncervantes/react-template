@@ -1,17 +1,16 @@
 import { M3eTheme } from '@m3e/react/theme'
-import type { ReactNode } from 'react'
+import type { PropsWithChildren } from 'react'
+import themeStyles from '@/features/theme/theme.module.css'
 import { useThemeStore } from '@/features/theme/theme.stores'
 
-interface ThemeProviderProps {
-  children: ReactNode
-}
+type Props = PropsWithChildren & {}
 
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+export const ThemeProvider = ({ children }: Props) => {
   const { theme } = useThemeStore()
 
   return (
-    <M3eTheme scheme={theme} color="#6750A4" motion="expressive">
-      {children}
+    <M3eTheme scheme={theme} color="#a8e6cf" motion="expressive">
+      <div className={themeStyles.base}>{children}</div>
     </M3eTheme>
   )
 }
