@@ -11,7 +11,7 @@ export const Route = createRootRoute({
         size="large"
         style={{ padding: '5rem', paddingBlockEnd: '1rem' }}
       >
-        React Template
+        Project Template
       </M3eHeading>
       <Outlet />
       <TanStackRouterDevtools initialIsOpen={false} />
