@@ -6,7 +6,11 @@ import { AppProvider } from '../providers/AppProvider'
 export const Route = createRootRoute({
   component: () => (
     <AppProvider>
-      <M3eHeading variant="display" size="large" style={{ padding: '5rem', paddingBlockEnd: '1rem' }}>
+      <M3eHeading
+        variant="display"
+        size="large"
+        style={{ padding: '5rem', paddingBlockEnd: '1rem' }}
+      >
         React Template
       </M3eHeading>
       <Outlet />
