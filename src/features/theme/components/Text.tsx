@@ -1,20 +1,8 @@
-import type {
-  HeadingLevel,
-  HeadingSize,
-  HeadingVariant,
-  M3eHeadingElement,
-} from '@m3e/react/heading'
 import { M3eHeading } from '@m3e/react/heading'
-import type { PropsWithChildren } from 'react'
-import type { ThemeBaseProps } from '../theme.types'
+import type { ComponentProps, PropsWithChildren } from 'react'
 
-export type TextProps = PropsWithChildren &
-  ThemeBaseProps<M3eHeadingElement> & {
-    level?: HeadingLevel
-    size?: HeadingSize
-    variant?: HeadingVariant
-  }
+export type ThemeTextProps = PropsWithChildren & ComponentProps<typeof M3eHeading> & {}
 
-export const ThemeText = ({ children, ...props }: TextProps) => {
+export const ThemeText = ({ children, ...props }: ThemeTextProps) => {
   return <M3eHeading {...props}>{children}</M3eHeading>
 }
