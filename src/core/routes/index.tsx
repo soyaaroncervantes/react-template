@@ -1,10 +1,10 @@
 import { M3eButton } from '@m3e/react/button'
+import { M3eCard } from '@m3e/react/card'
 import { M3eHeading } from '@m3e/react/heading'
 import { M3eList, M3eListItem } from '@m3e/react/list'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback } from 'react'
 import { type ThemeType, useThemeStore } from '@/features/theme/theme.stores'
-import { M3eCard } from '@m3e/react/card'
 
 export const Route = createFileRoute('/')({
   component: RootPage,
@@ -20,7 +20,17 @@ function RootPage() {
   )
 
   return (
-    <div style={{ padding: '1rem', margin: '1rem', borderRadius: '1rem', display: 'flex', gap: '2rem', backgroundColor: 'var(--md-sys-color-surface)', flexDirection: 'column' }}>
+    <div
+      style={{
+        padding: '1rem',
+        margin: '1rem',
+        borderRadius: '1rem',
+        display: 'flex',
+        gap: '2rem',
+        backgroundColor: 'var(--md-sys-color-surface)',
+        flexDirection: 'column',
+      }}
+    >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <M3eHeading variant="title" size="medium">
           Theme: {theme}
@@ -38,13 +48,11 @@ function RootPage() {
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', borderRadius: '1rem' }}>
-        <M3eHeading variant="title">
-          Stack
-        </M3eHeading>
+        <M3eHeading variant="title">Stack</M3eHeading>
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
           <M3eCard>
             <M3eHeading slot="header" variant="title" size="large">
-              Routing & API 
+              Routing & API
             </M3eHeading>
             <div slot="content">
               <M3eList variant="segmented">
