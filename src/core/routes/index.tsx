@@ -23,7 +23,8 @@ function RootPage() {
     <div
       style={{
         padding: '1rem',
-        margin: '1rem',
+        margin: '5rem',
+        marginBlockStart: '0',
         borderRadius: '1rem',
         display: 'flex',
         gap: '2rem',
