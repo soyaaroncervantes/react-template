@@ -24,11 +24,13 @@ function RootPage() {
         <M3eHeading variant="title" size="medium">
           Stack
         </M3eHeading>
-        <M3eList variant="segmented">
-          <M3eListItem>TanStack Router</M3eListItem>
-          <M3eListItem>M3E Design System</M3eListItem>
-          <M3eListItem>Zustand</M3eListItem>
-        </M3eList>
+        <div style={{ backgroundColor: 'var(--md-sys-color-surface-container)', padding: '1rem', borderRadius: '1rem' }}>
+          <M3eList variant="segmented">
+            <M3eListItem>TanStack Router</M3eListItem>
+            <M3eListItem>M3E Design System</M3eListItem>
+            <M3eListItem>Zustand</M3eListItem>
+          </M3eList>
+        </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         <M3eHeading variant="title" size="medium">
