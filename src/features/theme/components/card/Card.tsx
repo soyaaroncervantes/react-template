@@ -11,7 +11,14 @@ export const ThemeCard = ({ children, ...props }: ThemeCardProps) => {
   return <M3eCard {...props}>{children}</M3eCard>
 }
 
-ThemeCard.Header = ThemeCardHeader
-ThemeCard.Content = ThemeCardContent
-ThemeCard.Actions = ThemeCardActions
-ThemeCard.Footer = ThemeCardFooter
+export const Card = ThemeCard as typeof ThemeCard & {
+  Actions: typeof ThemeCardActions;
+  Content: typeof ThemeCardContent;
+  Footer: typeof ThemeCardFooter;
+  Header: typeof ThemeCardHeader;
+};
+
+Card.Actions = ThemeCardActions;
+Card.Content = ThemeCardContent;
+Card.Footer = ThemeCardFooter;
+Card.Header = ThemeCardHeader;
