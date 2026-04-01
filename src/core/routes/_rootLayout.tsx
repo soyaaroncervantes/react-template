@@ -1,5 +1,5 @@
-import { M3eHeading } from '@m3e/react/heading'
 import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { Theme } from '@/features/theme/components'
 import themeStyles from '@/features/theme/theme.module.css'
 
 export const Route = createFileRoute('/_rootLayout')({
@@ -9,13 +9,13 @@ export const Route = createFileRoute('/_rootLayout')({
 function RootPage() {
   return (
     <div className={themeStyles.base}>
-      <M3eHeading
+      <Theme.Text
         variant="display"
         size="large"
         style={{ padding: '5rem', paddingBlockEnd: '1rem' }}
       >
         Project Template
-      </M3eHeading>
+      </Theme.Text>
       <Outlet />
     </div>
   )
