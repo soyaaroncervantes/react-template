@@ -12,13 +12,13 @@ export const ThemeCard = ({ children, ...props }: ThemeCardProps) => {
 }
 
 export const Card = ThemeCard as typeof ThemeCard & {
-  Actions: typeof ThemeCardActions;
-  Content: typeof ThemeCardContent;
-  Footer: typeof ThemeCardFooter;
-  Header: typeof ThemeCardHeader;
-};
+  Actions: typeof ThemeCardActions
+  Content: typeof ThemeCardContent
+  Footer: typeof ThemeCardFooter
+  Header: typeof ThemeCardHeader
+}
 
-Card.Actions = ThemeCardActions;
-Card.Content = ThemeCardContent;
-Card.Footer = ThemeCardFooter;
-Card.Header = ThemeCardHeader;
+Card.Actions = ThemeCardActions
+Card.Content = ThemeCardContent
+Card.Footer = ThemeCardFooter
+Card.Header = ThemeCardHeader
