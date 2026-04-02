@@ -1,73 +1,81 @@
-# React + TypeScript + Vite
+# react-template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal React starter template built with modern tooling, file-based routing, and a component system based on Material Design 3.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Layer | Technology |
+|---|---|
+| Framework | [React 19](https://react.dev) + [TypeScript 6](https://www.typescriptlang.org) |
+| Build | [Vite 8](https://vite.dev) |
+| Routing | [TanStack Router](https://tanstack.com/router) (file-based) |
+| Server state | [TanStack Query](https://tanstack.com/query) |
+| Client state | [Zustand](https://zustand.docs.pmnd.rs) + [zustand-slices](https://github.com/zustandjs/zustand-slices) |
+| UI / Design system | [@m3e/react](https://github.com/soyaaroncervantes/m3e) (Material Design 3) |
+| Linting & formatting | [Biome](https://biomejs.dev) |
+| Testing | [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com) |
+| Package manager | [Bun](https://bun.sh) |
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+bun install
+bun dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Command | Description |
+|---|---|
+| `bun dev` | Start the dev server |
+| `bun build` | Type-check and build for production |
+| `bun preview` | Preview the production build |
+| `bun test` | Run tests |
+| `bun test:ui` | Run tests with the Vitest UI |
+| `bun test:coverage` | Run tests with coverage |
+| `bun lint` | Lint `src/` with Biome |
+| `bun format` | Format `src/` with Biome |
+| `bun check` | Lint + format `src/` with Biome |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project structure
+
 ```
+src/
+├── core/
+│   ├── app.tsx           # Entry point — router + React root
+│   ├── providers/        # AppProvider, QueryProvider, StoreProvider, ThemeProvider
+│   ├── routes/           # File-based routes (__root, _rootLayout)
+│   └── stores/           # Zustand store setup (app.store, devtools.store)
+├── features/
+│   └── theme/
+│       ├── components/   # Theme component system (Card, Text, Icon, Button)
+│       ├── theme.module.css
+│       └── theme.stores.ts
+└── shared/
+    └── base.types.ts
+```
+
+## Theme components
+
+Components are exposed through a single `Theme` namespace:
+
+```tsx
+import { Theme } from '@/features/theme/components'
+
+<Theme.Text variant="display" size="large">Hello</Theme.Text>
+<Theme.Button>Click me</Theme.Button>
+<Theme.Icon>home</Theme.Icon>
+
+<Card>
+  <Card.Header>Title</Card.Header>
+  <Card.Content>Body</Card.Content>
+  <Card.Footer>Footer</Card.Footer>
+  <Card.Actions>Actions</Card.Actions>
+</Card>
+```
+
+## Releases
+
+Releases follow [Conventional Commits](https://www.conventionalcommits.org). Tags are pushed manually and GitHub Actions automatically publishes a GitHub Release with generated notes.
+
+To create a new release, follow the Windsurf workflow at `.windsurf/workflows/release.md`.
