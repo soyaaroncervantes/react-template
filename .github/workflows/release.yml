@@ -1,0 +1,80 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get previous tag
+        id: prev_tag
+        run: |
+          PREV=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          echo "tag=$PREV" >> $GITHUB_OUTPUT
+
+      - name: Generate release notes
+        id: notes
+        run: |
+          TAG="${{ github.ref_name }}"
+          PREV="${{ steps.prev_tag.outputs.tag }}"
+
+          if [ -z "$PREV" ]; then
+            RANGE="HEAD"
+          else
+            RANGE="${PREV}..HEAD"
+          fi
+
+          COMMITS=$(git log $RANGE --pretty=format:"%s (%h)" --no-merges)
+
+          FEATURES=""
+          FIXES=""
+          REFACTORS=""
+          STYLES=""
+          CHORES=""
+          DOCS=""
+
+          while IFS= read -r line; do
+            case "$line" in
+              feat*) FEATURES="$FEATURES\n- $line" ;;
+              fix*)  FIXES="$FIXES\n- $line" ;;
+              refactor*) REFACTORS="$REFACTORS\n- $line" ;;
+              style*) STYLES="$STYLES\n- $line" ;;
+              docs*) DOCS="$DOCS\n- $line" ;;
+              chore*) CHORES="$CHORES\n- $line" ;;
+            esac
+          done <<< "$COMMITS"
+
+          BODY="## chore(release): $TAG\n"
+
+          [ -n "$FEATURES" ]  && BODY="$BODY\n### Features\n$FEATURES\n"
+          [ -n "$FIXES" ]     && BODY="$BODY\n### Bug Fixes\n$FIXES\n"
+          [ -n "$REFACTORS" ] && BODY="$BODY\n### Refactors\n$REFACTORS\n"
+          [ -n "$STYLES" ]    && BODY="$BODY\n### Styles\n$STYLES\n"
+          [ -n "$DOCS" ]      && BODY="$BODY\n### Docs\n$DOCS\n"
+          [ -n "$CHORES" ]    && BODY="$BODY\n### Chores\n$CHORES\n"
+
+          echo "body<<EOF" >> $GITHUB_OUTPUT
+          printf "$BODY" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: ${{ steps.notes.outputs.body }}
+          draft: false
+          prerelease: false
