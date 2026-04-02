@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet } from '@tanstack/react-router'
-import { Theme } from '@/features/theme/components'
-import themeStyles from '@/features/theme/theme.module.css'
+import { BaseLayout } from '@/core/layouts/BaseLayout'
+import layoutStyles from '@/core/layouts/layout.module.css'
 
 export const Route = createFileRoute('/_rootLayout')({
   component: RootPage,
@@ -8,15 +8,8 @@ export const Route = createFileRoute('/_rootLayout')({
 
 function RootPage() {
   return (
-    <div className={themeStyles.base}>
-      <Theme.Text
-        variant="display"
-        size="large"
-        style={{ padding: '5rem', paddingBlockEnd: '1rem' }}
-      >
-        Project Template
-      </Theme.Text>
+    <BaseLayout className={`${layoutStyles.layout} ${layoutStyles.root}`}>
       <Outlet />
-    </div>
+    </BaseLayout>
   )
 }
