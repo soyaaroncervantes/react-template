@@ -10,6 +10,7 @@ A personal React starter template built with modern tooling, file-based routing,
 | Build | [Vite 8](https://vite.dev) |
 | Routing | [TanStack Router](https://tanstack.com/router) (file-based) |
 | Server state | [TanStack Query](https://tanstack.com/query) |
+| HTTP client | [superagent](https://github.com/ladjs/superagent) + [superagent-prefix](https://github.com/johntron/superagent-prefix) |
 | Client state | [Zustand](https://zustand.docs.pmnd.rs) + [zustand-slices](https://github.com/zustandjs/zustand-slices) |
 | UI / Design system | [@m3e/react](https://github.com/soyaaroncervantes/m3e) (Material Design 3) |
 | Linting & formatting | [Biome](https://biomejs.dev) |
@@ -43,6 +44,8 @@ bun dev
 src/
 ├── core/
 │   ├── app.tsx           # Entry point — router + React root
+│   ├── clients/          # HTTP client (http-client.ts, api.stores.ts)
+│   ├── layouts/          # Reusable layout components (BaseLayout)
 │   ├── providers/        # AppProvider, QueryProvider, StoreProvider, ThemeProvider
 │   ├── routes/           # File-based routes (__root, _rootLayout)
 │   └── stores/           # Zustand store setup (app.store, devtools.store)
@@ -72,6 +75,29 @@ import { Theme } from '@/features/theme/components'
   <Card.Footer>Footer</Card.Footer>
   <Card.Actions>Actions</Card.Actions>
 </Card>
+```
+
+## HTTP client
+
+HTTP requests are made with `superagent`. The `createApiClient` factory creates a typed `Agent` with optional domain prefix via `superagent-prefix`.
+
+```ts
+import { createApiClient } from '@/core/clients/http-client'
+
+const client = createApiClient('https://api.example.com')
+const res = await client.get('/users').query({ page: 1 })
+```
+
+Clients are stored in Zustand via `apiClientsSlice` and accessed with the `useApiClients` hook:
+
+```ts
+import { useApiClients } from '@/core/clients/api.stores'
+
+const { add, getClient, remove } = useApiClients()
+
+const domain = 'https://api.example.com'
+add(domain)
+const client = getClient(domain)
 ```
 
 ## Releases
