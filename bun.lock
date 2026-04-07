@@ -4,15 +4,15 @@
     "": {
       "name": "react-videocall",
       "dependencies": {
-        "@lit/react": "1.0.8",
-        "@m3e/react": "2.1.3",
+        "@lit/react": "^1.0.8",
+        "@m3e/react": "2.2.0",
         "@tanstack/react-query": "5.95.2",
         "@tanstack/react-router": "1.168.8",
         "@tanstack/react-router-devtools": "1.166.11",
         "react": "19.2.4",
         "react-dom": "19.2.4",
-        "superagent": "^10.3.0",
-        "superagent-prefix": "^0.0.2",
+        "superagent": "10.3.0",
+        "superagent-prefix": "0.0.2",
         "zustand": "5.0.12",
         "zustand-slices": "0.4.0",
         "zustand-utils": "2.1.1",
@@ -27,8 +27,8 @@
         "@types/node": "24.12.0",
         "@types/react": "19",
         "@types/react-dom": "19",
-        "@types/superagent": "^8.1.9",
-        "@types/superagent-prefix": "^0.0.7",
+        "@types/superagent": "8.1.9",
+        "@types/superagent-prefix": "0.0.7",
         "@vitejs/plugin-react": "6.0.1",
         "@vitest/ui": "4.1.2",
         "globals": "17.4.0",
@@ -203,7 +203,7 @@
 
     "@lit/reactive-element": ["@lit/reactive-element@2.1.2", "", { "dependencies": { "@lit-labs/ssr-dom-shim": "^1.5.0" } }, "sha512-pbCDiVMnne1lYUIaYNN5wrwQXDtHaYtg7YEFPeW+hws6U47WeFvISGUWekPGKWOP1ygrs0ef0o1VJMk1exos5A=="],
 
-    "@m3e/react": ["@m3e/react@2.1.3", "", { "peerDependencies": { "@lit/react": "^1.0.8", "@m3e/web": "^2.1.3", "lit": "^3.3.0", "react": ">=18" } }, "sha512-oXQBnQirJCD8EGWYXq4/uajvp+w1ydAAk5j+FD8qlG1GXF0ptCXeBkyJipGtivitGxQQxP91PS+yLAapjuUETA=="],
+    "@m3e/react": ["@m3e/react@2.2.0", "", { "peerDependencies": { "@lit/react": "^1.0.8", "@m3e/web": "^2.2.0", "lit": "^3.3.0", "react": ">=18" } }, "sha512-5aFmOi4L1nq6PojGMJPVr0H4uIrgMGWIfzTz6f+7IbHOtQH0fBWxLeTr9Q53NE05fcIPyO3DBuIOZGZfw06Fgg=="],
 
     "@m3e/web": ["@m3e/web@2.1.3", "", { "dependencies": { "@floating-ui/dom": "^1.6.13", "@material/material-color-utilities": "^0.3.0", "composed-offset-position": "^0.0.6" }, "peerDependencies": { "lit": "^3.3.0", "tslib": "^2.8.1" } }, "sha512-q1CAAgc42NzgF7vlfCO61yUre++tJupS9iVWi39sFHYGM0pEtsj4ieD6noOn4cmy+YVoLLyLlXLgnTOiukT2pQ=="],
 
