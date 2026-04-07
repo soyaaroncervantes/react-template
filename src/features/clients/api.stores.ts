@@ -1,7 +1,7 @@
 import type { Agent } from 'superagent'
 import { createSlice } from 'zustand-slices'
-import { createApiClient } from '@/core/clients/HttpClient'
 import { useStore } from '@/core/stores/app.store'
+import { createApiClient } from './http-client'
 
 export const apiClientsSlice = createSlice({
   name: 'apiClients',
