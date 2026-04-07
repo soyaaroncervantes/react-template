@@ -2,6 +2,9 @@
 
 A personal React starter template built with modern tooling, file-based routing, and a component system based on Material Design 3.
 
+![Version](https://img.shields.io/github/v/tag/soyaaroncervantes/react-template?label=version)
+![License](https://img.shields.io/github/license/soyaaroncervantes/react-template)
+
 ## Stack
 
 | Layer | Technology |
