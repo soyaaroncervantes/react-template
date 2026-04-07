@@ -15,7 +15,7 @@ A personal React starter template built with modern tooling, file-based routing,
 | Server state | [TanStack Query](https://tanstack.com/query) |
 | HTTP client | [superagent](https://github.com/ladjs/superagent) + [superagent-prefix](https://github.com/johntron/superagent-prefix) |
 | Client state | [Zustand](https://zustand.docs.pmnd.rs) + [zustand-slices](https://github.com/zustandjs/zustand-slices) |
-| UI / Design system | [@m3e/react](https://github.com/soyaaroncervantes/m3e) (Material Design 3) |
+| UI / Design system | [@m3e/react](https://github.com/matraic/m3e) (Material Design 3) |
 | Linting & formatting | [Biome](https://biomejs.dev) |
 | Testing | [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com) |
 | Package manager | [Bun](https://bun.sh) |
