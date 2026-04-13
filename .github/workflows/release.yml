@@ -34,7 +34,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Run tests
-        run: bun test
+        run: bun run test
 
   build:
     name: Type-check and build
@@ -61,7 +61,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build
-        run: bun build
+        run: bun run build
 
   release:
     name: Create GitHub Release
