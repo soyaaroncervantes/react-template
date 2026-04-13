@@ -11,3 +11,5 @@ description: Create a new version of the project, it should release a new GH rel
 4. Create a new git-tag with the new version
 5. Follows conventional commits for tag description
 6. `.github/workflows/release.yml` workflow should be triggered
+7. Compare changes with previous tag
+8. Verify the release was created successfully
