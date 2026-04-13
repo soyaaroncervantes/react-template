@@ -24,8 +24,16 @@ A personal React starter template built with modern tooling, file-based routing,
 
 ```bash
 bun install
+cp .env.example .env
 bun dev
 ```
+
+## Environment variables
+
+| Variable | Description |
+|---|---|
+| `VITE_APP_NAME` | Application name |
+| `VITE_API_URL` | Base URL for the API client |
 
 ## Scripts
 
@@ -79,6 +87,21 @@ import { Theme } from '@/features/theme/components'
   <Card.Actions>Actions</Card.Actions>
 </Card>
 ```
+
+The color scheme (`light`, `dark`, `auto`) is managed via `useThemeStore`. The `auto` mode resolves to the user's OS preference via `getPreferredColorScheme()`.
+
+```ts
+import { useThemeStore } from '@/features/theme/theme.stores'
+
+const { theme, setTheme } = useThemeStore()
+setTheme('dark') // 'light' | 'dark' | 'auto'
+```
+
+## Debugging
+
+The project includes a VSCode debug configuration for Chrome. Press `F5` to start the dev server and attach the debugger.
+
+Breakpoints in `.tsx` files work out of the box. The `Start project` task (`bun dev`) runs automatically before the debugger attaches.
 
 ## HTTP client
 
