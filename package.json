@@ -14,7 +14,7 @@
     "format": "bunx biome format --write ./src",
     "check": "bunx biome check --write ./src",
     "env:sync": "bun run scripts/sync-env.ts",
-    "prepare": "bun run scripts/sync-env.ts && bunx simple-git-hooks"
+    "prepare": "bun run env:sync && bunx simple-git-hooks"
   },
   "dependencies": {
     "@lit/react": "1.0.8",
