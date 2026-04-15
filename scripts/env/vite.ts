@@ -1,9 +1,14 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs"
+import { SyncMachine } from "./machine"
+import type { SyncResult } from "./states"
 
 const DTS_HEADER = `/// <reference types="vite/client" />`
 const BIOME_IGNORE = `// biome-ignore lint/correctness/noUnusedVariables: Vite type augmentation`
 
-export function syncViteEnv(exampleContent: string, dtsPath: string): "updated" | "up-to-date" {
+export function syncViteEnv(exampleContent: string, dtsPath: string): SyncResult {
+  const machine = new SyncMachine()
+  machine.to("reading")
+
   const viteKeys: string[] = []
 
   for (const line of exampleContent.split("\n")) {
@@ -30,8 +35,12 @@ interface ImportMeta {
 
   const existing = existsSync(dtsPath) ? readFileSync(dtsPath, "utf-8") : ""
 
-  if (existing === dtsContent) return "up-to-date"
+  if (existing === dtsContent) {
+    machine.to("up-to-date")
+    return machine.result
+  }
 
   writeFileSync(dtsPath, dtsContent, "utf-8")
-  return "updated"
+  machine.to("updated", { added: viteKeys })
+  return machine.result
 }

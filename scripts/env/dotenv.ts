@@ -1,4 +1,6 @@
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs"
+import { SyncMachine } from "./machine"
+import type { SyncResult } from "./states"
 
 function parseKeys(content: string): Set<string> {
   const keys = new Set<string>()
@@ -11,15 +13,14 @@ function parseKeys(content: string): Set<string> {
   return keys
 }
 
-export type SyncDotenvResult =
-  | { status: "created" }
-  | { status: "updated"; added: string[] }
-  | { status: "up-to-date" }
+export function syncDotenv(exampleContent: string, envPath: string): SyncResult {
+  const machine = new SyncMachine()
+  machine.to("reading")
 
-export function syncDotenv(exampleContent: string, envPath: string): SyncDotenvResult {
   if (!existsSync(envPath)) {
     writeFileSync(envPath, exampleContent, "utf-8")
-    return { status: "created" }
+    machine.to("created")
+    return machine.result
   }
 
   const envContent = readFileSync(envPath, "utf-8")
@@ -39,8 +40,12 @@ export function syncDotenv(exampleContent: string, envPath: string): SyncDotenvR
     }
   }
 
-  if (!toAppend) return { status: "up-to-date" }
+  if (!toAppend) {
+    machine.to("up-to-date")
+    return machine.result
+  }
 
   appendFileSync(envPath, toAppend, "utf-8")
-  return { status: "updated", added }
+  machine.to("updated", { added })
+  return machine.result
 }
